@@ -1,6 +1,7 @@
 import torch
 from models import TwoLayerClassifier
 import joblib
+import os
 
 
 # Использование модели для предсказания на новых данных
@@ -23,3 +24,11 @@ def load_model_and_encoder(model_path, encoder_path):
     model.load_state_dict(model_params['state_dict'])
     label_encoder = joblib.load(encoder_path)
     return model, label_encoder
+
+def find_images_in_directory(directory):
+    image_files = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(('jpg', 'jpeg', 'png', 'bmp', 'gif')):
+                image_files.append(os.path.join(root, file))
+    return image_files
