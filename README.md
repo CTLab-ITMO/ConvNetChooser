@@ -49,6 +49,10 @@
     ```python
     print("Selected model:", selected_model)
     ```
+   
+## Запуск на Google Colab
+
+Есть руководство по запуску проекта на Google Colab. Вы можете найти его в папке `notebooks/guide.ipynb`.
 
 ## Вклад
 
