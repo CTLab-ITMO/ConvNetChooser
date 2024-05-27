@@ -1,8 +1,6 @@
 import torch
 import torch.nn as nn
-import joblib
-import torch.optim as optim
-from sklearn.preprocessing import LabelEncoder
+import torch.nn.functional as F
 
 # Определение параметров модели
 class TwoLayerClassifier(nn.Module):
@@ -16,4 +14,5 @@ class TwoLayerClassifier(nn.Module):
         out = self.fc1(x)
         out = self.relu(out)
         out = self.fc2(out)
+        out = F.softmax(out, dim=1)
         return out

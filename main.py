@@ -4,9 +4,7 @@ import os
 # Добавить корневую папку в sys.path
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-import torch
 from extractors.extractor import Features1065
-from models.model import TwoLayerClassifier
 from utils.utils import predict, load_model_and_encoder
 import os
 import gdown
@@ -17,7 +15,6 @@ image_files = [os.path.join(image_dir, f) for f in os.listdir(image_dir) if f.en
 image_files = image_files[:5]
 
 # Путь к сохраненной модели и LabelEncoder
-
 # Проверка, существует ли файл
 model_path = 'experiments/model_with_params.pth'
 if not os.path.exists(model_path):
@@ -25,6 +22,7 @@ if not os.path.exists(model_path):
     url = 'https://drive.google.com/uc?id=1G-p3pTZmLVL5Cq3jr7yY0M2iS_fY2DYr'
 
     gdown.download(url, model_path, quiet=False)
+
 encoder_path = 'experiments/label_encoder.pkl'
 
 feature_extractor = Features1065(by=2, device='cpu')
@@ -41,7 +39,7 @@ for image_file in image_files:
 model, label_encoder = load_model_and_encoder(model_path, encoder_path)
 
 # Предсказание классов на новых данных
-predicted_labels = predict(model, extracted_features)
+predicted_labels = predict(model, [extracted_features])
 predicted_classes = label_encoder.inverse_transform(predicted_labels)
 
-print("Predicted Classes:", predicted_classes)
+print("Predicted Model:", predicted_classes)

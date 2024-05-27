@@ -6,8 +6,6 @@ setup(
     author='Kamil Shakirov',
     author_email='shakirowkamil2001@gmail.com',
     description='Описание вашей библиотеки',
-    long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
     url='https://github.com/ваш_проект',  # URL вашего проекта
     packages=find_packages(),
     install_requires=[
