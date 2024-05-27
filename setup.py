@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='my_ml_library',
+    name='Arhitecture_selection',
     version='0.1.0',
     author='Kamil Shakirov',
     author_email='shakirowkamil2001@gmail.com',
