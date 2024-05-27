@@ -3,12 +3,18 @@ import gdown
 from extractors.extractor import Features1065
 from utils.utils import predict, load_model_and_encoder, find_images_in_directory
 
+# Получение текущей директории
+current_directory = os.path.dirname(__file__) if '__file__' in locals() else os.getcwd()
+
+# Формирование пути к директории experiments внутри текущей директории
+experiments_directory = os.path.join(current_directory, 'experiments')
+
 
 class ImageClassifier:
     def __init__(self, by=2, device='cpu'):
         # Инициализация пути к модели и LabelEncoder
-        self.model_path = 'experiments/model_with_params.pth'
-        self.encoder_path = 'experiments/label_encoder.pkl'
+        self.model_path = os.path.join(experiments_directory, 'model_with_params.pth')
+        self.encoder_path = os.path.join(experiments_directory, 'label_encoder.pkl')
 
         # Проверка, существует ли файл модели
         if not os.path.exists(self.model_path):
